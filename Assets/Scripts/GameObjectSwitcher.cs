@@ -6,6 +6,7 @@ public class GameObjectSwitcher : MonoBehaviour
     // active by pressing left arrow/ right arrow.
 
     [SerializeField] GameObject[] gameObjects = null;
+    [SerializeField] Transform cameraPivot = null;
     
     int index = 0;
 
@@ -40,6 +41,7 @@ public class GameObjectSwitcher : MonoBehaviour
         }
 
         ActivateGameObjectsByIndex();
+        cameraPivot.transform.rotation = Quaternion.identity;
     }
 
     void ActivateGameObjectsByIndex()
