@@ -2,7 +2,7 @@
 
 public class GameObjectSwitcher : MonoBehaviour
 {
-    // Given a list of gameObject, toggles setting one in the order
+    // Given a list of gameObjects, toggles setting one in the order
     // active by pressing left arrow/ right arrow.
 
     [SerializeField] GameObject[] gameObjects = null;
