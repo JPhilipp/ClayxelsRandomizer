@@ -76,22 +76,44 @@ public class ClayxelRandomizer : MonoBehaviour
         
         foreach (ClayObject clayObject in randomizedClayObjects)
         {
-            ClayObjectRandomizationStrength strength = clayObject.GetComponent<ClayObjectRandomizationStrength>();
-            if (strength == null) { strength = defaultStrength; }
-
-            clayObject.transform.localPosition = RandomizeNonZeroOfVector3(
-                clayObject.transform.position, 0.25f * strength.baseStrength * strength.position);
-            clayObject.transform.localEulerAngles = RandomizeNonZeroOfVector3(
-                clayObject.transform.localEulerAngles, 5f * strength.baseStrength * strength.rotation);
-            clayObject.transform.localScale = RandomizeVector3(
-                clayObject.transform.localScale, 0.25f * strength.baseStrength * strength.scale);
-
-            clayObject.color = RandomizeColor(
-                clayObject.color, 0.15f * strength.baseStrength * strength.color);
-
-            clayObject.blend = RandomizeFloat(
-                clayObject.blend, 0.1f * strength.baseStrength * strength.blend);
+            RandomizeClayxel(clayObject);
         }
+    }
+
+    void RandomizeClayxel(ClayObject clay)
+    {
+        ClayObjectRandomizationStrength strength =
+            GetAddComponent<ClayObjectRandomizationStrength>(clay.gameObject);
+
+        clay.transform.localPosition = RandomizeNonZeroOfVector3(
+            clay.transform.localPosition,
+            0.25f * defaultStrength.all * defaultStrength.position * strength.all * strength.position);
+        
+        clay.transform.localEulerAngles = RandomizeNonZeroOfVector3(
+            clay.transform.localEulerAngles,
+            5f * defaultStrength.all * defaultStrength.rotation * strength.all * strength.rotation);
+        
+        clay.transform.localScale = RandomizeVector3(
+            clay.transform.localScale,
+            0.25f * defaultStrength.all * defaultStrength.scale * strength.all * strength.scale);
+
+        clay.color = RandomizeColor(
+            clay.color,
+            0.15f * defaultStrength.all * defaultStrength.color * strength.all * strength.color);
+
+        clay.blend = RandomizeFloat(
+            clay.blend,
+            0.1f * defaultStrength.all * defaultStrength.blend * strength.all * strength.blend);
+    }
+
+    T GetAddComponent<T>(GameObject thisObject) where T : Component
+    {
+        Component component = thisObject.GetComponent<T>();
+        if (component == null)
+        {
+            component = thisObject.AddComponent<T>();
+        }
+        return (T) component;
     }
 
     float RandomizeFloat(float value, float max)
@@ -119,11 +141,6 @@ public class ClayxelRandomizer : MonoBehaviour
         );
     }
 
-    float RandomRange(float max)
-    {
-        return UnityEngine.Random.Range(-max, max);
-    }
-
     Vector3 RandomizeNonZeroOfVector3(Vector3 vector3, float max)
     {
         return vector3 + new Vector3(
@@ -131,6 +148,11 @@ public class ClayxelRandomizer : MonoBehaviour
             vector3.y != 0f ? RandomRange(max) : 0f,
             vector3.z != 0f ? RandomRange(max) : 0f
         );
+    }
+
+    float RandomRange(float max)
+    {
+        return UnityEngine.Random.Range(-max, max);
     }
 
     void ResetClayxels()
@@ -143,8 +165,8 @@ public class ClayxelRandomizer : MonoBehaviour
 
     void SetClayObjectFromSource(ClayObject source, ClayObject target)
     {
-        target.transform.position = source.transform.position;
-        target.transform.rotation = source.transform.rotation;
+        target.transform.localPosition = source.transform.localPosition;
+        target.transform.localRotation = source.transform.localRotation;
         target.transform.localScale = source.transform.localScale;
 
         target.color = source.color;

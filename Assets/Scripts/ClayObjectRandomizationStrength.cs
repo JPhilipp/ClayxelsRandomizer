@@ -9,7 +9,7 @@ public class ClayObjectRandomizationStrength : MonoBehaviour
     [Header("Note you can also add this component to individual ClayObjects.")]
 
     [Tooltip("The base randomization range multiplier applied to all properties. Higher values increase randomization.")]
-    public float baseStrength = 1f;
+    public float all = 1f;
     
     [Space]
 
@@ -33,12 +33,4 @@ public class ClayObjectRandomizationStrength : MonoBehaviour
 
     [Tooltip("The blend randomization range multiplier. Set 0 to disable.")]
     public float blend = 0f;
-    
-    /*
-    // Maybe for later.
-    [Space]
-    public float round = 1f;
-    public float radius = 1f;
-    public float fat = 1f;
-    */
 }
