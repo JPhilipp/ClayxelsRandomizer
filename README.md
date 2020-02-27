@@ -8,7 +8,7 @@ This is a simple tool to randomize your Clayxel clayObject positions, rotations,
 1. Grab the terrific **[Clayxels library](https://andrea-intg.itch.io/clayxels)** and add it somewhere to the project.
 2. Add the component **ClayxelRandomizer** to your Clayxel or Clayxels container, and hit play.
 
-You will now see your Clayxel randomized over time (you can adjust the speed in the inspector).
+You will now see your Clayxel randomized over time (you can adjust the speed in the inspector). You can hit the Return key to stop the auto-forwarding, and step manually via the Space key.
 
 ---
 
