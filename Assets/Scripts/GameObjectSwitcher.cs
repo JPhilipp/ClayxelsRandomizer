@@ -3,7 +3,7 @@
 public class GameObjectSwitcher : MonoBehaviour
 {
     // Given a list of gameObjects, toggles setting one in the order
-    // active by pressing left arrow/ right arrow.
+    // active by pressing left/ right arrow.
 
     [SerializeField] GameObject[] gameObjects = null;
     [SerializeField] Transform cameraPivot = null;
@@ -41,7 +41,11 @@ public class GameObjectSwitcher : MonoBehaviour
         }
 
         ActivateGameObjectsByIndex();
-        cameraPivot.transform.rotation = Quaternion.identity;
+
+        if (cameraPivot != null)
+        {
+            cameraPivot.transform.rotation = Quaternion.identity;
+        }
     }
 
     void ActivateGameObjectsByIndex()
