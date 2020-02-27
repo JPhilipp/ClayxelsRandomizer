@@ -2,6 +2,8 @@
 
 This is a simple tool to randomize your Clayxel clayObject positions, rotations, colors and more over time... for inspiration, creating variations, and fun!
 
+[![](https://img.youtube.com/vi/FucO_pYHdtw/0.jpg)](https://www.youtube.com/watch?v=FucO_pYHdtw)
+
 **To get started:**
 1. Grab the terrific **[Clayxels library](https://andrea-intg.itch.io/clayxels)** and add it somewhere to the project.
 2. Add the component **ClayxelRandomizer** to your Clayxel or Clayxels container, and hit play.
