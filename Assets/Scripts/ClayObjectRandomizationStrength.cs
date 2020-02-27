@@ -2,15 +2,19 @@
 
 public class ClayObjectRandomizationStrength : MonoBehaviour
 {
+    // Allows adjusting of randomization strength via multipliers
+    // on a global as well as per-ClayObject basis.
+
     public float position = 1f;
     public float rotation = 1f;
     public float scale = 1f;
     [Space]
     public float color = 1f;
     [Space]
-    public float blend = 1f;
+    public float blend = 0f;
     
     /*
+    // Maybe for later.
     [Space]
     public float round = 1f;
     public float radius = 1f;

@@ -2,14 +2,11 @@
 
 public class ClayxelRandomizer : MonoBehaviour
 {
-    [SerializeField] Transform referenceClayxelsRoot = null;
-    [SerializeField] Transform randomizedClayxelsRoot = null;
-    [Space]
+    // Randomizes the Clayxels in their position, rotation,
+    // color and such.
+
     [SerializeField] float randomizationStrength = 1f;
     [SerializeField] float secondsPerRound = 0.5f;
-    [Space]
-    [SerializeField] bool randomizeBlend = false;
-    [SerializeField] bool randomizeRound = false;
 
     ClayObject[] referenceClayObjects = null;
     ClayObject[] randomizedClayObjects = null;
@@ -21,19 +18,35 @@ public class ClayxelRandomizer : MonoBehaviour
 
     void Start()
     {
-        referenceClayxelsRoot.gameObject.SetActive(false);
-        randomizedClayxelsRoot.gameObject.SetActive(true);
+        randomizedClayObjects = GetComponentsInChildren<ClayObject>();
+        CreateReferenceClayxels();
 
-        referenceClayObjects = referenceClayxelsRoot.GetComponentsInChildren<ClayObject>(true);
-        randomizedClayObjects = randomizedClayxelsRoot.GetComponentsInChildren<ClayObject>(true);
+        InitDefaultStrength();
 
+        RandomizeClayxels();
+    }
+
+    void CreateReferenceClayxels()
+    {
+        GameObject reference = Instantiate(gameObject);
+        reference.name = gameObject.name + " (Reference)";
+
+        Destroy(reference.GetComponentInChildren<Clayxel>());        
+        Destroy(reference.GetComponent<ClayxelRandomizer>());
+        Destroy(reference.GetComponent<ClayObjectRandomizationStrength>());
+
+        referenceClayObjects = reference.GetComponentsInChildren<ClayObject>();
+
+        reference.SetActive(false);
+    }
+
+    void InitDefaultStrength()
+    {
         defaultStrength = GetComponent<ClayObjectRandomizationStrength>();
         if (defaultStrength == null || !defaultStrength.enabled)
         {
             defaultStrength = gameObject.AddComponent<ClayObjectRandomizationStrength>();
         }
-
-        RandomizeClayxels();
     }
 
     void Update()
@@ -74,11 +87,8 @@ public class ClayxelRandomizer : MonoBehaviour
             clayObject.color = RandomizeColor(
                 clayObject.color, 0.15f * randomizationStrength * strength.color);
 
-            if (randomizeBlend)
-            {
-                clayObject.blend = RandomizeFloat(
-                    clayObject.blend, 0.1f * randomizationStrength * strength.blend);
-            }
+            clayObject.blend = RandomizeFloat(
+                clayObject.blend, 0.1f * randomizationStrength * strength.blend);
         }
     }
 
