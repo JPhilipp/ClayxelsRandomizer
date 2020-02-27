@@ -8,7 +8,7 @@ public class ClayxelRandomizer : MonoBehaviour
     // position, rotation, color and such.
 
     [Tooltip("How long to wait between randomizing again.")]
-    [SerializeField] float secondsPerRound = 0.5f;
+    [SerializeField] float secondsPerRound = 1f;
 
     ClayObject[] referenceClayObjects = null;
     ClayObject[] randomizedClayObjects = null;
