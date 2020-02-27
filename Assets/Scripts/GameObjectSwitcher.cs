@@ -54,7 +54,7 @@ public class GameObjectSwitcher : MonoBehaviour
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            if (gameObjects[i].active)
+            if (gameObjects[i].activeSelf)
             {
                 index = i;
                 break;
