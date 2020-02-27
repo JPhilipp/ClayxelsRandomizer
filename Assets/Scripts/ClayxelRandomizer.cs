@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(ClayObjectRandomizationStrength))]
+
 public class ClayxelRandomizer : MonoBehaviour
 {
-    // Randomizes the Clayxels in their position, rotation,
-    // color and such.
+    // Can be attached to a Clayxels container to randomize the ClayObjects
+    // position, rotation, color and such.
 
-    [SerializeField] float randomizationStrength = 1f;
+    [Tooltip("How long to wait between randomizing again.")]
     [SerializeField] float secondsPerRound = 0.5f;
 
     ClayObject[] referenceClayObjects = null;
@@ -78,17 +80,17 @@ public class ClayxelRandomizer : MonoBehaviour
             if (strength == null) { strength = defaultStrength; }
 
             clayObject.transform.localPosition = RandomizeNonZeroOfVector3(
-                clayObject.transform.position, 0.25f * randomizationStrength * strength.position);
+                clayObject.transform.position, 0.25f * strength.baseStrength * strength.position);
             clayObject.transform.localEulerAngles = RandomizeNonZeroOfVector3(
-                clayObject.transform.localEulerAngles, 5f * randomizationStrength * strength.rotation);
+                clayObject.transform.localEulerAngles, 5f * strength.baseStrength * strength.rotation);
             clayObject.transform.localScale = RandomizeVector3(
-                clayObject.transform.localScale, 0.25f * randomizationStrength * strength.scale);
+                clayObject.transform.localScale, 0.25f * strength.baseStrength * strength.scale);
 
             clayObject.color = RandomizeColor(
-                clayObject.color, 0.15f * randomizationStrength * strength.color);
+                clayObject.color, 0.15f * strength.baseStrength * strength.color);
 
             clayObject.blend = RandomizeFloat(
-                clayObject.blend, 0.1f * randomizationStrength * strength.blend);
+                clayObject.blend, 0.1f * strength.baseStrength * strength.blend);
         }
     }
 

@@ -3920,7 +3920,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1918751413}
   - component: {fileID: 1918751412}
-  - component: {fileID: 1918751411}
   m_Layer: 0
   m_Name: Structure Clayxels
   m_TagString: Untagged
@@ -3928,20 +3927,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1918751411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918751410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c57a5c613dba6342a20547c56c3f1eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomizationStrength: 6
-  secondsPerRound: 0.5
 --- !u!114 &1918751412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4164,7 +4149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c57a5c613dba6342a20547c56c3f1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizationStrength: 2
   secondsPerRound: 0.5
 --- !u!114 &1951154680
 MonoBehaviour:
@@ -4459,6 +4443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33558f4a5c128b142b36e4ea09307dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseStrength: 1
   position: 1
   rotation: 1
   scale: 1
@@ -4476,7 +4461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c57a5c613dba6342a20547c56c3f1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizationStrength: 1
   secondsPerRound: 0.5
 --- !u!1 &2144891287
 GameObject:
@@ -4526,5 +4510,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c57a5c613dba6342a20547c56c3f1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizationStrength: 1
   secondsPerRound: 0.5
